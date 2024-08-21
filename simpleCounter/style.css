@@ -1,0 +1,52 @@
+body {
+	background-image: url("people.jpg");
+	background-size: cover;
+	font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+		"Helvetica Neue", sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+
+.div1 {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	background-color: aliceblue;
+	border-radius: 20px;
+	max-width: 80%;
+	margin: auto;
+}
+
+h1 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 50;
+	color: chocolate;
+}
+
+h2 {
+	font-size: 50px;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+button {
+	border: 1px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: white;
+	font-weight: bold;
+	width: 200px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+
+#increment-btn {
+	background: rgb(0, 98, 255);
+}
+
+#save-btn {
+	background: darkgreen;
+}
