@@ -85,7 +85,7 @@ p {
  **                            SCOREBOARD NUMBERS
  *========================================================================**/
 
-.numbersSpan {
+#numbersSpan {
 	justify-content: space-around;
 	display: flex;
 	margin-bottom: 0;
