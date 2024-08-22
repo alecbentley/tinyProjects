@@ -21,15 +21,20 @@ const observer = new MutationObserver((mutationsList, observer) => {
 	const guestValue = parseInt(guestNumberBox.innerHTML);
 
 	if (homeValue >= 9) {
-		console.log(`We hit 9! on home`);
-		observer.disconnect();
+		console.log(`9 hit on home`);
+		message.innerHTML = `HOME TEAM WON! new game`;
+		gameOver();
+		// observer.disconnect();
 	} else if (guestValue >= 9) {
-		console.log(`We hit 9! on guest`);
-		observer.disconnect();
+		console.log(`9 hit on guest`);
+		message.innerHTML = `GUEST TEAM WON! new game`;
+		gameOver();
+		// observer.disconnect();
 	}
 });
 
 const config = { childList: true, subtree: true };
+
 observer.observe(homeNumberBox, config);
 observer.observe(guestNumberBox, config);
 
@@ -92,6 +97,15 @@ function resetButton() {
 	guestNumber.innerHTML = b;
 	message.innerHTML = `New Game starting!`;
 	console.log(typeof a, typeof b, a, b);
+}
+
+function gameOver() {
+	let a = parseInt(homeNumber.innerHTML);
+	let b = parseInt(guestNumber.innerHTML);
+	a = 0;
+	b = 0;
+	homeNumber.innerHTML = a;
+	guestNumber.innerHTML = b;
 }
 
 /**========================================================================
