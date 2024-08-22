@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Scoreboard</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<section class="scoreboard">
+			<div class="header">
+				<div class="divHomeGuest">
+					<h3 class="h3">HOME</h3>
+				</div>
+				<div class="divHomeGuest">
+					<h3 class="h3">GUEST</h3>
+				</div>
+			</div>
+			<div id="messageDiv">
+				<p id="message">Enjoy the game!</p>
+			</div>
+			<div class="resetDiv">
+				<button id="resetButton" onclick="resetButton()">New Game</button>
+			</div>
+			<span class="numbersSpan">
+				<div class="numbersDiv">
+					<h3 id="homeNumberBox">0</h3>
+				</div>
+
+				<div class="numbersDiv">
+					<h3 id="guestNumberBox">0</h3>
+				</div>
+			</span>
+			<span class="buttonsSpan">
+				<div class="homeButtons">
+					<button id="home1" onclick="home1()">+1</button>
+					<button id="home2" onclick="home2()">+2</button>
+					<button id="home2" onclick="home3()">+3</button>
+				</div>
+				<div class="guestButtons">
+					<button id="guest1" onclick="guest1()">+1</button>
+					<button id="guest2" onclick="guest2()">+2</button>
+					<button id="guest3" onclick="guest3()">+3</button>
+				</div>
+			</span>
+		</section>
+		<script src="script.js"></script>
+	</body>
+</html>
