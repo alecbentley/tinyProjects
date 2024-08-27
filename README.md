@@ -11,7 +11,11 @@
 
 ### People counter
 ![counter](https://github.com/user-attachments/assets/8cc3c159-875b-480d-873b-33da789aee05)
+<br>
 
 ### Blackjack game
 ![blackjack](https://github.com/user-attachments/assets/fc71913f-54ea-40f7-9bd3-2565ab232639)
+<br>
 
+### pickFighter
+![pickfighter](https://github.com/user-attachments/assets/a23117df-b418-452f-93ae-8e502ca179ea)
