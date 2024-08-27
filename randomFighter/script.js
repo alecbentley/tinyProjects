@@ -36,3 +36,5 @@ fightButton.addEventListener("click", function () {
 
 	stageEl.textContent = `${fighter1} vs ${fighter2}`;
 });
+
+//end
