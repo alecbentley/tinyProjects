@@ -11,3 +11,7 @@
 
 ### People counter
 ![counter](https://github.com/user-attachments/assets/8cc3c159-875b-480d-873b-33da789aee05)
+
+### Blackjack game
+![blackjack](https://github.com/user-attachments/assets/fc71913f-54ea-40f7-9bd3-2565ab232639)
+
