@@ -1,0 +1,10 @@
+:root {
+	--medium-grey: rgba(213, 212, 216, 1);
+	--text-xl-leading-7-font-normal-font-family: "Inter", Helvetica;
+	--text-xl-leading-7-font-normal-font-weight: 400;
+	--text-xl-leading-7-font-normal-font-size: 20px;
+	--text-xl-leading-7-font-normal-letter-spacing: 0px;
+	--text-xl-leading-7-font-normal-line-height: 28px;
+	--text-xl-leading-7-font-normal-font-style: normal;
+	--shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
