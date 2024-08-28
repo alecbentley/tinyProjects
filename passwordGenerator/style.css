@@ -81,7 +81,7 @@
 	border-radius: 6px;
 }
 
-.populated-state .div {
+.populated-state .passwordField1 {
 	position: absolute;
 	width: 180px;
 	top: 3px;
@@ -106,7 +106,7 @@
 	border-radius: 6px;
 }
 
-.populated-state .text-2 {
+.populated-state .passwordField2 {
 	position: absolute;
 	width: 192px;
 	top: 3px;
