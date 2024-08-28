@@ -1,6 +1,6 @@
 :root {
 	--medium-grey: rgba(213, 212, 216, 1);
-	--text-xl-leading-7-font-normal-font-family: "Inter", Helvetica;
+	--text-xl-leading-7-font-normal-font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", sans-serif
 	--text-xl-leading-7-font-normal-font-weight: 400;
 	--text-xl-leading-7-font-normal-font-size: 20px;
 	--text-xl-leading-7-font-normal-letter-spacing: 0px;
