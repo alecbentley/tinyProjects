@@ -6,6 +6,13 @@
 	background-color: #1f2937;
 }
 
+.populated-state .lock {
+	scale: 17%;
+	position: absolute;
+	top: -32%;
+	right: 25%;
+}
+
 .populated-state .heading {
 	position: absolute;
 	width: 354px;
