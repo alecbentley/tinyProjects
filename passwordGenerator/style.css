@@ -60,10 +60,6 @@
 	justify-content: center;
 }
 
-/* .populated-state #password-length {
-	padding-right: 150px;
-} */
-
 .populated-state #button {
 	align-items: center;
 	justify-content: center;
@@ -96,9 +92,10 @@
 	border-radius: 6px;
 }
 
-.populated-state .passwordField1 {
+.populated-state .passwordField1,
+.passwordField2 {
 	position: absolute;
-	width: 180px;
+	width: 192px;
 	top: 3px;
 	left: 15px;
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -109,6 +106,24 @@
 	text-align: center;
 	letter-spacing: 0;
 	line-height: 32px;
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.populated-state .passwordField1:hover:after,
+.passwordField2:hover:after {
+	content: "Click to copy";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 0 5px;
+	background-color: #f1f1f1;
+	color: #1f2937;
+	border-radius: 5px;
+	font-size: 12px;
 }
 
 .populated-state .overlap {
@@ -119,20 +134,6 @@
 	top: 396px;
 	background-color: #273549;
 	border-radius: 6px;
-}
-
-.populated-state .passwordField2 {
-	position: absolute;
-	width: 192px;
-	top: 3px;
-	left: 10px;
-	font-family: "Inter-Medium", Helvetica;
-	font-weight: 500;
-	color: #55f991;
-	font-size: 16px;
-	text-align: center;
-	letter-spacing: 0;
-	line-height: 32px;
 }
 
 .populated-state .line {
