@@ -19,3 +19,7 @@
 
 ### pickFighter
 ![pickfighter](https://github.com/user-attachments/assets/a23117df-b418-452f-93ae-8e502ca179ea)
+<br>
+
+### Password Generator
+![passwordPIC](https://github.com/user-attachments/assets/75552a98-80fd-470b-a28b-82354f64183a)
