@@ -3,6 +3,20 @@
 // prettier-ignore
 const charset = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+const inputField = document.querySelector("#password-length");
+let parsedInputField;
+
+inputField.addEventListener("input", function () {
+	let value = parseInt(this.value);
+	if (value < 14) {
+		this.value = 14;
+	} else if (value > 19) {
+		this.value = 19;
+	}
+	this.value = value;
+	parsedInputField = value;
+});
+
 const passwordField1 = document.querySelector(".passwordField1");
 const passwordField2 = document.querySelector(".passwordField2");
 passwordField1.textContent = `password 1`;
@@ -18,8 +32,8 @@ function generate(length) {
 }
 
 function fillPasswords() {
-	const password1 = generate(15);
-	const password2 = generate(15);
+	const password1 = generate(parsedInputField);
+	const password2 = generate(parsedInputField);
 	passwordField1.textContent = password1;
 	passwordField2.textContent = password2;
 	console.log(`password 1 length is ${password1.length} chars`);

@@ -13,9 +13,18 @@
 				<span class="span">random password</span>
 			</p>
 			<p class="supporting-text">Never use an insecure password again.</p>
-			<button class="button" onclick="fillPasswords()">
-				<img class="text" src="greentext.png" />
-			</button>
+			<span class="span2">
+				<button id="button" class="innerSpan" onclick="fillPasswords()">
+					<img class="text" src="greentext.png" />
+				</button>
+				<input
+					id="password-length"
+					type="number"
+					placeholder="Length"
+					min="14"
+					max="19"
+				/>
+			</span>
 			<div class="overlap-group">
 				<div class="passwordField1"></div>
 			</div>
