@@ -1,5 +1,5 @@
 
-># A collection of random tiny projects from coding class.
+># A collection of tiny projects from JavaScript coding class.
 ># A record for myself.
 <br>
 <br>
