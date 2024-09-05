@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 10px;
 	font-family: Helvetica, sans-serif;
+	min-width: 600px;
 }
 
 input {
@@ -9,13 +10,67 @@ input {
 	padding: 10px;
 	box-sizing: border-box;
 	border: 2px solid #6b61bc;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
+	font-size: 20px;
 }
 
-button {
+ul {
+	list-style: none;
+	font-size: 20px;
+	padding-left: 0;
+}
+
+li {
+	text-decoration: none;
+	margin-top: 1px;
+}
+
+li a {
+	text-decoration: none;
+	color: #6b61bc;
+}
+
+#button {
 	background: #6b61bc;
 	color: white;
 	padding: 10px 20px;
-	border: none;
+	border: 1px solid #6b61bc;
 	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+#button:active {
+	transform: translateY(2px);
+	box-shadow: 2px #666;
+}
+
+#tab-btn {
+	background: #6b61bc;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid #6b61bc;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+#tab-btn:active {
+	transform: translateY(2px);
+	box-shadow: 2px #666;
+}
+
+#delete-btn {
+	background: white;
+	color: #6b61bc;
+	padding: 10px 20px;
+	border: 1px solid #6b61bc;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+#delete-btn:active {
+	transform: translateY(2px);
+	box-shadow: 2px #666;
 }
