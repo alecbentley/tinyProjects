@@ -23,3 +23,6 @@
 
 ### Password Generator
 ![passwordPIC](https://github.com/user-attachments/assets/75552a98-80fd-470b-a28b-82354f64183a)
+
+### Chrome Extension (Leads Collector)
+![chromeAPP](https://github.com/user-attachments/assets/f0535619-01ed-4154-933c-c50bbe37d0b7)
