@@ -1,0 +1,16 @@
+:root {
+	--white: rgba(255, 255, 255, 1);
+	--text-sm-leading-5-font-normal-font-family: "Inter", Helvetica;
+	--text-sm-leading-5-font-normal-font-weight: 400;
+	--text-sm-leading-5-font-normal-font-size: 14px;
+	--text-sm-leading-5-font-normal-letter-spacing: 0px;
+	--text-sm-leading-5-font-normal-line-height: 20px;
+	--text-sm-leading-5-font-normal-font-style: normal;
+	--text-base-leading-6-font-medium-font-family: "Inter", Helvetica;
+	--text-base-leading-6-font-medium-font-weight: 500;
+	--text-base-leading-6-font-medium-font-size: 16px;
+	--text-base-leading-6-font-medium-letter-spacing: 0px;
+	--text-base-leading-6-font-medium-line-height: 24px;
+	--text-base-leading-6-font-medium-font-style: normal;
+	--shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
