@@ -5,15 +5,15 @@
  *========================================================================**/
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 import { databaseUrl } from "./config.js";
-import firebase from "firebase/app";
-import "firebase/database";
 
 const firebaseConfig = {
 	databaseURL: databaseUrl,
 };
 
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 /**========================================================================
  **                     Declare variables, fetch DOM
@@ -21,19 +21,18 @@ const app = initializeApp(firebaseConfig);
 let myLeads = [];
 const inputEl = document.querySelector("#input-el"); //input field
 const inputBtn = document.querySelector("#button"); //button
-const tabBtn = document.querySelector("#tab-btn"); // save tab button
 const deleteBtn = document.querySelector("#delete-btn"); //delete button
 const ulEl = document.querySelector("#ul-el"); //unordered list div
 
-// check localStorage. If something there, parse it into an array.
-const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+// -- check localStorage. If something there, parse it into an array.
+// const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-// then fill the empty myLeads array with the stuff from localStorage.
-// this is to add persistence across refreshs.
-if (leadsFromLocalStorage) {
-	myLeads = leadsFromLocalStorage;
-	renderLeads(myLeads);
-}
+// -- then fill the empty myLeads array with the stuff from localStorage.
+// -- this is to add persistence across refreshs.
+// if (leadsFromLocalStorage) {
+// 	myLeads = leadsFromLocalStorage;
+// 	renderLeads(myLeads);
+// }
 
 /**========================================================================
  **                     eventListener for 'Save Input' button
@@ -46,27 +45,14 @@ inputBtn.addEventListener("click", function () {
 		return;
 	}
 	myLeads.push(userInput); // push user input into array
-	localStorage.setItem("myLeads", JSON.stringify(myLeads)); // push array to localStorage
+	// localStorage.setItem("myLeads", JSON.stringify(myLeads)); // --push array to localStorage
 
 	inputEl.value = ""; // clear the input field
 
-	console.log(localStorage.getItem("myLeads")); //verify localStorage string injection
+	// console.log(localStorage.getItem("myLeads")); //--verify localStorage string injection
 	console.log(myLeads); // verify localStorage reverse array injection
 
 	renderLeads(myLeads);
-});
-
-/**========================================================================
- **                 eventListener for 'Save Tab' button
- *========================================================================**/
-
-// use Chrome API to save URL of active browser tab into localStorage
-tabBtn.addEventListener("click", function () {
-	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-		myLeads.push(tabs[0].url);
-		localStorage.setItem("myLeads", JSON.stringify(myLeads));
-		renderLeads(myLeads);
-	});
 });
 
 /**========================================================================
@@ -93,9 +79,9 @@ function renderLeads(leadsArray) {
 deleteBtn.addEventListener("click", function () {
 	ulEl.textContent = ""; //clear DOM
 	myLeads = []; // reset array
-	localStorage.clear(); //clear localStorage
+	// localStorage.clear(); //--clear localStorage
 
 	//confirmation
 	console.log(`the myLeads array: ${myLeads}`);
-	console.log(`the localStorage: ${localStorage}`);
+	// console.log(`the localStorage: ${localStorage}`);
 });
