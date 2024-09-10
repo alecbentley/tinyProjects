@@ -1,11 +1,11 @@
 "use strict";
 
 /**========================================================================
- **                            Firebase
+ **                       Initialize Firebase channel
  *========================================================================**/
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 import { databaseUrl } from "./config.js";
 
 const firebaseConfig = {
@@ -14,9 +14,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const referenceInDB = ref(database, "inputValues");
 
 /**========================================================================
- **                     Declare variables, fetch DOM
+ **                    Declare variables, fetch DOM
  *========================================================================**/
 let myLeads = [];
 const inputEl = document.querySelector("#input-el"); //input field
@@ -24,18 +25,20 @@ const inputBtn = document.querySelector("#button"); //button
 const deleteBtn = document.querySelector("#delete-btn"); //delete button
 const ulEl = document.querySelector("#ul-el"); //unordered list div
 
-// -- check localStorage. If something there, parse it into an array.
-// const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+/**========================================================================
+ **                        Interact with Firebase (pull)
+ *========================================================================**/
 
-// -- then fill the empty myLeads array with the stuff from localStorage.
-// -- this is to add persistence across refreshs.
-// if (leadsFromLocalStorage) {
-// 	myLeads = leadsFromLocalStorage;
-// 	renderLeads(myLeads);
-// }
+//pull Firebase data
+onValue(referenceInDB, function (snapshot) {
+	const snapshotValues = snapshot.val(); //pull values from Firebase
+	const transformFirebase = Object.values(snapshotValues); //transform pulled object values into an array
+	myLeads = transformFirebase;
+	renderLeads(myLeads);
+});
 
 /**========================================================================
- **                     eventListener for 'Save Input' button
+ *?                     eventListener for 'Save Input' button
  *========================================================================**/
 inputBtn.addEventListener("click", function () {
 	const userInput = inputEl.value;
@@ -44,19 +47,15 @@ inputBtn.addEventListener("click", function () {
 		alert(`Please enter a valid URL starting with: www...`);
 		return;
 	}
-	myLeads.push(userInput); // push user input into array
-	// localStorage.setItem("myLeads", JSON.stringify(myLeads)); // --push array to localStorage
+	push(referenceInDB, userInput); //push user input to Firebase
 
 	inputEl.value = ""; // clear the input field
 
-	// console.log(localStorage.getItem("myLeads")); //--verify localStorage string injection
-	console.log(myLeads); // verify localStorage reverse array injection
-
-	renderLeads(myLeads);
+	// renderLeads(myLeads);
 });
 
 /**========================================================================
- **                 <li> the saved items to the <ul> div
+ *TODO      create function:  <li> the saved items to the <ul> div
  *========================================================================**/
 function renderLeads(leadsArray) {
 	let listItem = "";
@@ -73,15 +72,9 @@ function renderLeads(leadsArray) {
 }
 
 /**========================================================================
- **                 eventListener for 'Delete All' button
+ *?                 eventListener for 'Delete All' button
  *========================================================================**/
 
 deleteBtn.addEventListener("click", function () {
 	ulEl.textContent = ""; //clear DOM
-	myLeads = []; // reset array
-	// localStorage.clear(); //--clear localStorage
-
-	//confirmation
-	console.log(`the myLeads array: ${myLeads}`);
-	// console.log(`the localStorage: ${localStorage}`);
 });
