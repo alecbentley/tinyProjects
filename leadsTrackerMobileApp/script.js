@@ -5,7 +5,13 @@
  *========================================================================**/
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+import {
+	getDatabase,
+	ref,
+	push,
+	onValue,
+	remove,
+} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 import { databaseUrl } from "./config.js";
 
 const firebaseConfig = {
@@ -26,15 +32,18 @@ const deleteBtn = document.querySelector("#delete-btn"); //delete button
 const ulEl = document.querySelector("#ul-el"); //unordered list div
 
 /**========================================================================
- **                        Interact with Firebase (pull)
+ **       Interact with Firebase (Firebase built-in eventListener)
  *========================================================================**/
 
 //pull Firebase data
 onValue(referenceInDB, function (snapshot) {
-	const snapshotValues = snapshot.val(); //pull values from Firebase
-	const transformFirebase = Object.values(snapshotValues); //transform pulled object values into an array
-	myLeads = transformFirebase;
-	renderLeads(myLeads);
+	const snapshotDoesExist = snapshot.exists(); //check Firebase if database exists
+	if (snapshotDoesExist) {
+		const snapshotValues = snapshot.val(); //pull values from Firebase
+		const transformFirebase = Object.values(snapshotValues); //transform pulled object values into an array
+		myLeads = transformFirebase;
+		renderLeads(myLeads);
+	}
 });
 
 /**========================================================================
@@ -76,5 +85,6 @@ function renderLeads(leadsArray) {
  *========================================================================**/
 
 deleteBtn.addEventListener("click", function () {
-	ulEl.textContent = ""; //clear DOM
+	remove(referenceInDB); //remove data from Firebase
+	ulEl.innerHTML = ""; //clear DOM
 });
