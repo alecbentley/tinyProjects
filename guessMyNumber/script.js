@@ -4,10 +4,10 @@
  **                            fetch DOM
  *========================================================================**/
 
-const messageEl = document.querySelector(".message");
-const scoreEL = document.querySelector(".score");
+let messageEl = document.querySelector(".message").textContent;
+let scoreEL = document.querySelector(".score").textContent;
+let bigNumberEl = document.querySelector(".number").textContent;
 const highscoreEl = document.querySelector(".highscore");
-const bigNumberEl = document.querySelector(".number");
 const inputField = document.querySelector(".guess");
 const checkButton = document.querySelector(".check");
 
@@ -31,22 +31,30 @@ let score = 20;
 checkButton.addEventListener("click", function () {
 	const guess = parseInt(inputField.value);
 	if (!guess) {
-		messageEl.textContent = `please input a number`;
+		messageEl = `please input a number`;
 	} else if (guess === randomNumber) {
-		messageEl.textContent = `You guessed correct!!!`;
-		bigNumberEl.textContent = randomNumber;
+		messageEl = `You guessed correct!!!`;
+		bigNumberEl = randomNumber;
 		inputField.value = "";
 	} else if (guess > randomNumber) {
-		messageEl.textContent = `You guessed too high`;
-		score--;
-		scoreEL.textContent = `${score}`;
-		inputField.value = "";
-		console.log(score);
+		if (score > 1) {
+			messageEl = `You guessed too high`;
+			score--;
+			scoreEL = `${score}`;
+			inputField.value = "";
+		} else {
+			scoreEL = `0`;
+			messageEl = `You loose!`;
+		}
 	} else if (guess < randomNumber) {
-		messageEl.textContent = `You guessed too low`;
-		score--;
-		scoreEL.textContent = `${score}`;
-		inputField.value = "";
-		console.log(score);
+		if (score > 1) {
+			messageEl = `You guessed too low`;
+			score--;
+			scoreEL = `${score}`;
+			inputField.value = "";
+		} else {
+			scoreEL = `0`;
+			messageEl = `You loose!`;
+		}
 	}
 });
