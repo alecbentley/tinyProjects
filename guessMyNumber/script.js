@@ -74,7 +74,7 @@ function handleInput() {
 	} else if (guess === randomNumber) {
 		pageBody.style.backgroundColor = "#60b347";
 		displayMessage(`You guessed correct!!!`);
-		bigNumber(randomNumber);
+		bigNumber(randomNumber); //show the user the secret number
 		finalScoresArray.push(score); //push score to array
 		console.log(`FINAL SCORES ARE: ${finalScoresArray}`);
 		inputFieldBox("");
