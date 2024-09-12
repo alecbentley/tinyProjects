@@ -23,16 +23,16 @@ function randoNum() {
 }
 randoNum();
 
-console.log(`secret number is ${randomNumber}`);
+console.log(`super secret number is ${randomNumber}`);
 
 /**========================================================================
- **                            declare state variables
+ **                            declare variables
  *========================================================================**/
 
-let score = 20;
+let score = 20; //set the initial score state variable.
 
-let finalScoresArray = []; //for collecting scores
-let max = [];
+let finalScoresArray = []; //for collecting all the scores.
+let max = []; //will collect the highest score when 'again' button clicked.
 
 /**========================================================================
  *TODO                         "Check" Button logic
@@ -46,45 +46,43 @@ function handleInput() {
 	if (!guess) {
 		messageEl.textContent = `please input a number`;
 
-		//otherwise, if user guesses correct
+		//otherwise, if user guesses Secret Number
 	} else if (guess === randomNumber) {
 		pageBody.style.backgroundColor = "#60b347";
 		messageEl.textContent = `You guessed correct!!!`;
 		bigNumberEl.textContent = randomNumber;
-		finalScoresArray.push(score);
+		finalScoresArray.push(score); //push score to array
 		console.log(`FINAL SCORES ARE: ${finalScoresArray}`);
 		inputField.value = "";
 
-		//otherwise, if user guesses too high
-	} else if (guess > randomNumber) {
-		if (score > 1) {
-			//make sure score is above 0 first, then activate code
-			messageEl.textContent = `You guessed too high`;
-			score--;
-			scoreEL.textContent = `${score}`;
-			inputField.value = "";
-		} else {
-			//if user loses do this
-			scoreEL.textContent = `0`;
-			messageEl.textContent = `You loose!`;
+		//or if user guesses wrong
+	} else if (guess !== randomNumber) {
+		if (score > 0) {
+			score--; //subtract 1 from score, only if score is above 0
 		}
 
-		//otherwise, if user guesses too low
-	} else if (guess < randomNumber) {
-		if (score > 1) {
-			//make sure score is above 0 first, then activate code
-			messageEl.textContent = `You guessed too low`;
-			score--;
-			scoreEL.textContent = `${score}`;
-			inputField.value = "";
-		} else {
-			//if user loses do this
-			scoreEL.textContent = `0`;
-			messageEl.textContent = `You loose!`;
+		scoreEL.textContent = `${score}`;
+		inputField.value = "";
+
+		if (guess > randomNumber) {
+			if (score > 1) {
+				//make sure score is above 0 first, then activate code
+				messageEl.textContent = `You guessed too high`;
+			}
+		} else if (guess < randomNumber) {
+			if (score > 1) {
+				//make sure score is above 0 first, then activate code
+				messageEl.textContent = `You guessed too low`;
+			}
 		}
 	}
-}
 
+	if (score === 0) {
+		scoreEL.textContent = `0`;
+		messageEl.textContent = `You loose!`;
+		inputField.value = "";
+	}
+}
 /**========================================================================
  *?                            "Check" button eventListeners
  *========================================================================**/
@@ -102,25 +100,26 @@ document.addEventListener("keydown", function (event) {
  *========================================================================**/
 
 againButton.addEventListener("click", function () {
-	console.log(`new game ====`);
+	console.log(`New Game ===============`);
 	messageEl.textContent = `Let's play again. Guess a number!`;
 	bigNumberEl.textContent = `?`;
 
+	//loop over array of scores and determine highest score. Store in max variable
 	for (let i = 0; i < finalScoresArray.length; i++) {
 		if (finalScoresArray[i] > max) {
 			max = finalScoresArray[i];
 		}
 	}
-	console.log(`forloop determines highest score as ${max}`);
+	console.log(`forloop determines highest score as: ${max}`);
 
 	highscoreEl.textContent = `${max}`;
 	console.log(`max = ${max}`);
 	score = 20;
 	scoreEL.textContent = `${score}`;
 
-	randoNum();
+	randoNum(); //set new random number
 
 	pageBody.style.backgroundColor = "#222";
 
-	console.log(`new random number ${randomNumber}`);
+	console.log(`new super secret number: ${randomNumber}`);
 });
