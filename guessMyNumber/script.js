@@ -1,7 +1,7 @@
 "use strict";
 
 /**========================================================================
- **                            fetch DOM
+ **                            fetch DOM elements
  *========================================================================**/
 
 const messageEl = document.querySelector(".message");
@@ -12,6 +12,30 @@ const inputField = document.querySelector(".guess");
 const checkButton = document.querySelector(".check");
 const pageBody = document.querySelector("body");
 const againButton = document.querySelector(".again");
+
+/**========================================================================
+ *TODO           transform fetched DOM elements into functions
+ *========================================================================**/
+
+function displayMessage(input) {
+	messageEl.textContent = input;
+}
+
+function bigNumber(input) {
+	bigNumberEl.textContent = input;
+}
+
+function inputFieldBox(input) {
+	inputField.value = input;
+}
+
+function scoreDisplay(input) {
+	scoreEL.textContent = input;
+}
+
+function highScoreDisplay(input) {
+	highscoreEl.textContent = input;
+}
 
 /**========================================================================
  **                       Generate random number 1-20
@@ -35,7 +59,7 @@ let finalScoresArray = []; //for collecting all the scores.
 let max = []; //will collect the highest score when 'again' button clicked.
 
 /**========================================================================
- *TODO                         "Check" Button logic
+ *TODO                         "Check" Button logic as a function
  *========================================================================**/
 
 //eventListener not added here because it needs to be 'click' & 'Enter'. Scroll further down to see the eventListener. This code goes into eventListener.
@@ -44,43 +68,44 @@ function handleInput() {
 
 	//check to make sure user has input a value
 	if (!guess) {
-		messageEl.textContent = `please input a number`;
+		displayMessage(`please input a number`);
 
 		//otherwise, if user guesses Secret Number
 	} else if (guess === randomNumber) {
 		pageBody.style.backgroundColor = "#60b347";
-		messageEl.textContent = `You guessed correct!!!`;
-		bigNumberEl.textContent = randomNumber;
+		displayMessage(`You guessed correct!!!`);
+		bigNumber(randomNumber);
 		finalScoresArray.push(score); //push score to array
 		console.log(`FINAL SCORES ARE: ${finalScoresArray}`);
-		inputField.value = "";
+		inputFieldBox("");
 
 		//or if user guesses wrong
 	} else if (guess !== randomNumber) {
 		if (score > 0) {
-			score--; //subtract 1 from score, only if score is above 0
+			score--; //subtract 1 from score, only if score is above 0, ti prevent going negative int
 		}
 
-		scoreEL.textContent = `${score}`;
-		inputField.value = "";
+		scoreDisplay(`${score}`);
+		inputFieldBox("");
 
 		if (guess > randomNumber) {
 			if (score > 1) {
 				//make sure score is above 0 first, then activate code
-				messageEl.textContent = `You guessed too high`;
+				displayMessage(`You guessed too high`);
 			}
 		} else if (guess < randomNumber) {
 			if (score > 1) {
 				//make sure score is above 0 first, then activate code
-				messageEl.textContent = `You guessed too low`;
+				displayMessage(`You guessed too low`);
 			}
 		}
 	}
 
+	//if the score reaches zero
 	if (score === 0) {
-		scoreEL.textContent = `0`;
-		messageEl.textContent = `You loose!`;
-		inputField.value = "";
+		scoreDisplay(`0`);
+		displayMessage(`You loose!`);
+		inputFieldBox("");
 	}
 }
 /**========================================================================
@@ -101,8 +126,8 @@ document.addEventListener("keydown", function (event) {
 
 againButton.addEventListener("click", function () {
 	console.log(`New Game ===============`);
-	messageEl.textContent = `Let's play again. Guess a number!`;
-	bigNumberEl.textContent = `?`;
+	displayMessage(`Let's play again. Guess a number!`);
+	bigNumber(`?`);
 
 	//loop over array of scores and determine highest score. Store in max variable
 	for (let i = 0; i < finalScoresArray.length; i++) {
@@ -112,10 +137,10 @@ againButton.addEventListener("click", function () {
 	}
 	console.log(`forloop determines highest score as: ${max}`);
 
-	highscoreEl.textContent = `${max}`;
+	highScoreDisplay(`${max}`);
 	console.log(`max = ${max}`);
 	score = 20;
-	scoreEL.textContent = `${score}`;
+	scoreDisplay(`${score}`);
 
 	randoNum(); //set new random number
 
