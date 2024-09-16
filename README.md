@@ -34,3 +34,10 @@
 ### guess a random number game
 ![guessGame](https://github.com/user-attachments/assets/67caa74d-b2db-4fde-91e1-2b9c86be6621)
 <br>
+
+### dice game
+![pigGamePIC](https://github.com/user-attachments/assets/97d6c412-66a0-48dd-81ad-47a608655a9c)
+<br>
+
+
+
