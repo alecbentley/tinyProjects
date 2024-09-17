@@ -84,13 +84,13 @@ holdButton.addEventListener("click", function () {
 		diceRollArray.length = 0;
 	}
 
-	if (player1scoreboardAccumulator >= 100) {
+	if (player1scoreboardAccumulator >= 20) {
 		document.querySelector("#score--0").textContent = `YOU WIN!`;
 		rollDiceButton.disabled = true;
-	} else if (player1scoreboardAccumulator >= 100) {
+	} else if (player1scoreboardAccumulator >= 20) {
 		document.querySelector("#score--1").textContent = `YOU WIN!`;
 		rollDiceButton.disabled = true;
-	} else if (player1scoreboardAccumulator < 100 && player2scoreboardAccumulator < 100) {
+	} else if (player1scoreboardAccumulator < 20 && player2scoreboardAccumulator < 20) {
 		switchPlayer();
 	}
 });
@@ -98,8 +98,11 @@ holdButton.addEventListener("click", function () {
 /*================== "New Game" button =================*/
 
 newGameButton.addEventListener("click", function () {
-	diceRoll;
+	rollDiceButton.disabled = !true;
+	activePlayer = 1;
+	ActivePlayerChecker();
 	diceRollArray = [];
+	diceRollsSum = 0;
 	document.querySelector(".dice").src = `assets/dice-0.png`;
 	playerScoreboard(12, "0");
 	playerCurrentScore(12, "0");
