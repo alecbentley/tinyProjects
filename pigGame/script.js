@@ -17,6 +17,7 @@ let player2isActive = document.querySelector(".player--1").classList.contains("p
 let activePlayer = 1;
 let diceRoll;
 let diceRollArray = [];
+let diceRollsSum = 0;
 document.querySelector(".dice").src = `assets/dice-0.png`;
 playerScoreboard(12, "0");
 playerCurrentScore(12, "0");
@@ -26,11 +27,12 @@ let player2scoreboardAccumulator = 0;
 /*------------------ ""Roll Dice" button -----------------*/
 
 rollDiceButton.addEventListener("click", function () {
+	console.log(`========START rollDiceButton========`);
 	rollTheDice();
 	displayTheDice();
 	diceRollArray.push(diceRoll);
 	console.log(`diceRollArray is currently: ${diceRollArray}`);
-	let diceRollsSum = 0;
+	diceRollsSum = 0;
 
 	ActivePlayerChecker();
 	console.log(`activePlayer is player ${activePlayer}`);
@@ -54,13 +56,7 @@ rollDiceButton.addEventListener("click", function () {
 
 	playerCurrentScore(activePlayer, diceRollsSum);
 
-	if (player1isActive) {
-		player1scoreboardAccumulator += diceRollsSum;
-	} else if (player2isActive) {
-		player2scoreboardAccumulator += diceRollsSum;
-	}
-
-	console.log(`======================`);
+	console.log(`=========END rollDiceButton=============`);
 });
 
 /*------------------ "Hold" button -----------------*/
@@ -68,6 +64,15 @@ rollDiceButton.addEventListener("click", function () {
 holdButton.addEventListener("click", function () {
 	console.log(`======== HOLD ========`);
 	ActivePlayerChecker();
+	console.log(`diceRollsSum is ${diceRollsSum}`);
+
+	if (player1isActive) {
+		player1scoreboardAccumulator += diceRollsSum;
+		console.log(`player1scoreboardaccumulator: ${player1scoreboardAccumulator}`);
+	} else if (player2isActive) {
+		player2scoreboardAccumulator += diceRollsSum;
+		console.log(`player2scoreboardaccumulator: ${player2scoreboardAccumulator}`);
+	}
 
 	if (activePlayer === 1) {
 		document.querySelector("#score--0").textContent = player1scoreboardAccumulator;
