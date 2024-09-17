@@ -84,13 +84,13 @@ holdButton.addEventListener("click", function () {
 		diceRollArray.length = 0;
 	}
 
-	if (player1scoreboardAccumulator >= 20) {
+	if (player1scoreboardAccumulator >= 50) {
 		document.querySelector("#score--0").textContent = `YOU WIN!`;
 		rollDiceButton.disabled = true;
-	} else if (player1scoreboardAccumulator >= 20) {
+	} else if (player2scoreboardAccumulator >= 50) {
 		document.querySelector("#score--1").textContent = `YOU WIN!`;
 		rollDiceButton.disabled = true;
-	} else if (player1scoreboardAccumulator < 20 && player2scoreboardAccumulator < 20) {
+	} else if (player1scoreboardAccumulator < 50 && player2scoreboardAccumulator < 50) {
 		switchPlayer();
 	}
 });
